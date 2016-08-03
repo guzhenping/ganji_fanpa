@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>机器人确认</title>
+<meta name="Robots" content="noindex,nofollow" />
+	<!--meta http-equiv="Refresh" content="10; url=/" /-->
+<link href="http://sta.ganjistatic1.com/src/css/global/global.css" rel="stylesheet" type="text/css" />
+<link href="http://sta.ganjistatic1.com/src/css/ued/global/globle.css" rel="stylesheet" type="text/css" />
+<link href="http://sta.ganjistatic1.com/src/css/ued/global/google_ads.css" rel="stylesheet" type="text/css" />
+<link href="http://sta.ganjistatic1.com/src/css/ued/category/global.css" rel="stylesheet" type="text/css" />
+<link href="http://sta.ganjistatic1.com/src/css/ued/404/404.css" rel="stylesheet" type="text/css" />
+<script src="http://sta.ganjistatic1.com/src/js/util/ganji/ganji.__1350886315__.js" type="text/javascript"></script>
+<script type="text/javascript">
+    GJ.use('jquery', function(){});
+    var rUrl = "http://tj.ganji.com/zpjdcyqita/o1/";
+    if (GJ.getCookie("crawler_uuid") == null)
+    {
+        GJ.setCookie("crawler_uuid", GJ.rand(11111111111111, 99999999999999), 1800);
+    }
+    function resetLoginCheckcode() {
+        var img = document.getElementById('login_img_checkcode');
+        if (img!=null) {
+            img.src = '/sorry/cc.php?nocache=' + (new Date() * 1);
+        }
+        var ccode   = document.getElementById('checkValue');
+        ccode.value = '';
+        ccode.focus();
+        return false;
+    }
+
+    function checkVerified() {
+        if (GJ.getCookie("verified") == 1) {
+            window.clearInterval(timeId);
+            window.location.href=rUrl;
+        }
+    }
+
+    var timeId = window.setInterval("checkVerified()", 2000);
+
+	function checkCode()
+	{
+		var checkValue = document.getElementById('checkValue').value;
+		$.ajax({
+		type:"get",
+		url:"http://" + window.location.host + "/sorry/checkcode.php?code=" + checkValue,
+		//data: 
+		async:false,
+		success:function(data, textStatus)
+		{
+			var json = '';
+			try{
+			    json = GJ.jsonDecode(data);
+			}catch(e){}
+			if(json.status == true)
+			{
+                GJ.setCookie("verified", 1, 15);
+                window.clearInterval(timeId);
+				window.location.href=rUrl;
+			}
+			else
+			{
+				$("#checkcodeerror").css("display","block"); 
+				resetLoginCheckcode();
+			}
+		},
+		error:function(XMLHttpRequest, textStatus, errorThrown)
+		{
+			$("#checkcodeerror").css("display","block"); 
+			resetLoginCheckcode();
+		}
+		});
+	}
+
+	function checkInputFocus(){
+		if($("#checkcodeerror").css("display") == "block")
+		{
+			$("#checkcodeerror").css("display","none"); 
+		}
+	}
+	
+
+	</script>
+
+</head>
+<body data-gjch="/all_cate/verify/-/-/op">
+<!--head start-->
+<div class="head">
+    <div class="tbd">
+        <div id="where">
+       			<a class="logo" href="/"></a> <span class="city"><a href="http://www.ganji.com/index.htm" >[切换城市]</a> </span></div>
+    </div>
+</div>
+<!--head end-->
+<!--导航 start-->
+<div class="nav clr">
+  <ul class="nav-cont clr">
+      <li>
+    <a href="http://www.ganji.com/">首页</a>
+    <a class="" href="http://www.ganji.com/fang/">房屋租售</a><a class="" href="http://www.ganji.com/wu/">二手物品</a><a class="" href="http://www.ganji.com/zhaopin/">招聘求职</a><a class="" href="http://www.ganji.com/che/">车辆买卖</a><a href="http://www.ganji.com/chongwu/" class="nav-pet ">宠物</a><a class="" href="http://www.ganji.com/huangye/">生活服务</a><a class="" href="http://www.ganji.com/jiaoyupeixun/">教育培训</a><a href="http://love.ganji.com/" class="hover2" target="_blank">婚恋交友</a><a href="http://www.mayi.com/" class="hover2" target="_blank">蚂蚁短租</a><a title="下载手机客户端 随时随地浏览生活点滴" href="http://mobile.ganji.com/?from=ganji_top" class="hover2 last-one" target="_blank">手机赶集</a>
+    </li>
+  </ul>
+</div>
+<!--导航 end-->
+<div id="wrapper" class="clearfix">
+<!--cont start-->
+<div class="cont clearfix">
+    <div class="cont-left" style="width:200px"><img src="http://stacdn201.ganjistatic1.com/src/image/globle/ued/robot.png" width="179" height="189" alt="" /></div>
+    <div class="cont-right" style="margin-left: 220px;overflow:hidden;">
+      <div class="error" style="overflow:hidden">
+        <p class="error-tips1" style="line-height:2em">您的访问速度太快了，如果您不是机器的话，输入下面的验证码来继续访问吧：</p>
+        <div style="overflow:hidden">
+          <input id="checkValue" type="input" onclick="checkInputFocus()" class="" name="" value="" autocomplete="off" style="height:30px;line-height:30px;float:left;border:1px solid #ccc;" onkeydown='if(event.keyCode==13){checkCode();}'>
+          <span style="float:left;margin-left:10px"><img  id="login_img_checkcode" src="/sorry/cc.php?from=web&nocache=1470020721"> </span>
+	<span style="line-height:20px;display:block;float:left;"><span id="checkcodeerror" style="font-weight:bold;color:red;display:none">验证码错误<br></span>
+	<a onclick="resetLoginCheckcode();return false;" href="#">看不清？换个验证码</a></span>
+	</div>
+      </div>
+      <div style="display: block;clear:both" class="login-submit" id="login-submit">       
+         <input type="button" onclick="checkCode()" value="确 定" class="search-btn">                            
+      </div>
+    </div>
+  </div>
+<!--cont end--></div>
+<ul id="footer">
+  <li><a href="http://www.ganji.com/misc/abouts/index.php?act=about" rel="nofollow" target="_blank">关于Ganji</a> - <a href="http://www.ganji.com/tuiguang/zhaopin/zizhu/" rel="nofollow"  target="_blank">赶集推广</a> - <a href="http://tuiguang.ganji.com/zhaoshang/agent.htm" rel="nofollow" target="_blank"> 渠道合作 </a> - <a href="http://help.ganji.com/" rel="nofollow" target="_blank">帮助中心</a> - <a style="color:#C00;" href="http://help.ganji.com/html/sjbmy/" rel="nofollow" target="_blank">手机号被冒用</a> - <a href="http://www.ganji.com/misc/abouts/link.php?act=link" rel="nofollow" target="_blank">友情链接</a> - <a target="_blank" rel="nofollow" href="http://www.ganji.com/misc/abouts/index.php?act=job">招贤纳士</a> - <a target="_blank" href="http://bj.ganji.com/quxiandaohang/">区县导航</a></li>
+</ul>
+<script type="text/javascript">
+GJ.use('log_tracker', function(){
+                GJ.LogTracker.gjchNew = '/all_cate/verify/-/-/op';
+                GJ.LogTracker.trackPageView();
+            });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Robots" content="noindex,nofollow" />
+<base href="http://www.ganji.com/" id="id_base" />
+<title>您访问的网页不存在 </title>
+<script type="text/javascript" src="http://sta.ganji.com/cgi/ganji_sta.php?file=ganji"></script>
+<link href="http://s6.ganjistatic1.com/css/base.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="header">
+	<div class="logo"><a href="/"><img alt="首页" src="http://s6.ganjistatic1.com/images/logo_s.gif"/></a></div>
+	<div class="city">&nbsp;<a href="http://www.ganji.com/index.htm">切换城市</a></div>
+
+	<div class="top_help">
+		<span id="userLoginMsg"><!-- user login status is here --></span>
+	</div>
+</div>
+<div id="wrapper">
+  <div id="where"> <a href="/" id="link_index">赶集首页</a> &gt; <a>访问出错</a>
+    <div class="wherebg1">&nbsp;</div>
+
+    <div class="wherebg2">&nbsp;</div>
+  </div>
+  <div id="content_404">
+    <div class="cont_404">
+	  <div class="cont_error">
+	    <div class="cont_error_img">
+		  <p>出错了! 您想访问的页面不存在<br />
+		     <span style="font-size:12px; font-weight:normal; padding:0; color:#666666;">可能该页面已被删除，也可能您输入有误。</span>
+
+		  </p>
+		</div>		
+		<div class="fenlei">
+		  <span style="color:#666; padding:5px 0; display:block; font-size:13px;">您也可以:</span>
+		  <ul class="classified">
+		    <li>直接去<a href="/">赶集首页</a>看看</li>
+
+			<li id="id_pub" style="display:none">免费<a href="/pub/pub_select.php">发布一条信息</a></li>
+			<li>去看看感兴趣的分类</li>
+		  </ul>
+		  <ul class="classified2">
+		    <li><a href="/fang/">房产</a></li>
+			<li><a href="/wu/">二手物品</a></li>
+
+			<li><a href="/zhaopin/">招聘信息</a></li>
+			<li><a href="/qiuzhi/">求职简历</a></li>
+			<li><a href="/jiaoyupeixun/">教育培训</a></li>
+			<li><a href="/ershouche/">二手车</a></li>
+			<li><a href="/huangye/">生活服务</a></li>
+			<li><a href="/huangye/">商务服务</a></li>
+
+			<li><a href="/huodong/">同城活动</a></li>
+			<li><a href="/jiaoyou/">同城交友</a></li>
+		  </ul>
+		</div>
+	  </div>
+	
+	</div>
+  </div>
+  
+
+</div>
+
+<ul id="footer">
+	<li><a target="_blank" rel="nofollow" href="http://www.ganji.com/misc/abouts/index.php?act=about">关于Ganji</a> - <a target="_blank" rel="nofollow" href="http://tuiguang.ganji.com/zhaoshang/index.htm">赶集推广</a> - <a target="_blank" rel="nofollow" href="http://tuiguang.ganji.com/zhaoshang/agent.htm"> 渠道合作 </a> - <a target="_blank" rel="nofollow" href="http://www.ganji.com/misc/abouts/index.php?act=help">帮助中心</a> - <a target="_blank" rel="nofollow" href="/site/u/" style="color:#C00;">修改/删除信息</a> - <a target="_blank" rel="nofollow" href="http://www.ganji.com/misc/abouts/link.php?act=link">友情链接</a> - <a rel="nofollow" href="http://www.ganji.com/aboutus/linkApply.htm ">网站合作</a> - <a target="_blank" rel="nofollow" href="http://www.ganji.com/misc/abouts/index.php?act=job">招贤纳士</a> - <a target="_blank" rel="nofollow" href="/quxiandaohang/">区县导航</a></li>
+
+	<li>Copyright &copy;2005-2011Ganji 版权所有 <a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP证080580号</a>&nbsp;京ICP备09085189<br />海淀公安局网络备案编号：1101081759</li>
+</ul>
+
+
+
+<script type="text/javascript"> 
+GJ.use('js/app/common/user/user.js', function(){
+    GJ.displayLoginMsg({containerId : 'top_banner'});
+});
+
+GJ.use('jquery', function(){
+    var citydomain = GJ.getCookie('citydomain');
+    if (citydomain) {
+        $('#id_base').attr('href', 'http://'+citydomain+'.ganji.com');
+		$('#id_pub').show();
+    }
+});
+
+GJ.use('js/app/common/google/google.js', function(){
+    GJ.google.trackPageview();
+});
+</script>
+</body>
+</html>
